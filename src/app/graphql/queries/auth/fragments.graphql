@@ -1,0 +1,4 @@
+fragment TokensType on Tokens {
+  access_token
+  refresh_token
+}

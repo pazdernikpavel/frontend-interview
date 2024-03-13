@@ -1,0 +1,5 @@
+mutation DeleteCategory($id: String!) {
+  removeCategory(id: $id) {
+    ...CategoryType
+  }
+}

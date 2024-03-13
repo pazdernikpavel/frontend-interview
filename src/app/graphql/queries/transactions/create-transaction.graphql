@@ -1,0 +1,5 @@
+mutation CreateTransaction($input: CreateTransactionRecordInput!) {
+  createTransactionRecord(createTransactionRecordInput: $input) {
+    ...TransactionRecordType
+  }
+}

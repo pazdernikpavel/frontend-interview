@@ -1,0 +1,5 @@
+mutation DeleteTransaction($id: String!) {
+  removeTransactionRecord(id: $id) {
+    ...TransactionRecordType
+  }
+}

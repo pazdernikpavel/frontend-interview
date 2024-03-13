@@ -1,0 +1,10 @@
+fragment TransactionRecordType on TransactionRecord {
+  id
+  amount
+  authorId
+  categoryId
+  date
+  description
+  title
+  type
+}
