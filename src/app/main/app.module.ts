@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
 import { NbLayoutModule, NbThemeModule } from '@nebular/theme';
 
-import { AppRoutingModule } from './app-routing.module';
+import { GraphQLModule } from '@app/graphql/graphql.module';
 import { AppComponent } from './app.component';
-import { GraphQLModule } from './graphql/graphql.module';
+import { appRoutes } from './app.routes';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    RouterModule.forRoot(appRoutes),
     GraphQLModule,
     NbThemeModule.forRoot(),
     NbLayoutModule,
   ],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

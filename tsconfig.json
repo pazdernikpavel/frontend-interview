@@ -20,7 +20,15 @@
     "skipLibCheck": true,
     "module": "ES2022",
     "useDefineForClassFields": false,
-    "lib": ["ES2022", "dom"]
+    "lib": ["ES2022", "dom"],
+    "paths": {
+      "@app/auth/*": ["./src/app/auth/*"],
+      "@app/main/*": ["./src/app/main/*"],
+      "@app/shared/*": ["./src/app/shared/*"],
+      "@app/graphql/*": ["./src/app/graphql/*"],
+      "@app/store/*": ["./src/app/store/*"],
+      "@app/pages/*": ["./src/app/pages/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
@@ -29,3 +37,4 @@
     "strictTemplates": true
   }
 }
+
