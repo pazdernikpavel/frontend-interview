@@ -43,11 +43,7 @@
               }
             ],
             "distinctGroup": false,
-            "pathGroupsExcludedImportTypes": [
-              "@angular/**",
-              "@app/**",
-              "src/**"
-            ],
+            "pathGroupsExcludedImportTypes": ["@angular/**", "@app/**", "src/**"],
             "groups": [
               "builtin",
               "external",
@@ -91,53 +87,13 @@
         "curly": ["warn", "all"],
         "max-depth": ["error", 5],
         "no-underscore-dangle": "off",
-        "@typescript-eslint/no-unused-vars": [
-          "error",
-          { "argsIgnorePattern": "^_" }
-        ],
-        "@typescript-eslint/quotes": [
-          "error",
-          "single",
-          { "allowTemplateLiterals": true }
-        ],
+        "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+        "@typescript-eslint/quotes": ["error", "single", { "allowTemplateLiterals": true }],
         "@typescript-eslint/explicit-member-accessibility": [
           "error",
           {
             "accessibility": "explicit",
             "overrides": { "constructors": "no-public" }
-          }
-        ],
-        "@typescript-eslint/member-ordering": [
-          "warn",
-          {
-            "default": [
-              "signature",
-              "public-static-field",
-              "protected-static-field",
-              "private-static-field",
-              "public-decorated-field",
-              "protected-decorated-field",
-              "private-decorated-field",
-              "public-instance-field",
-              "protected-instance-field",
-              "private-instance-field",
-              "public-abstract-field",
-              "protected-abstract-field",
-              "public-constructor",
-              "protected-constructor",
-              "private-constructor",
-              "public-static-method",
-              "protected-static-method",
-              "private-static-method",
-              "public-decorated-method",
-              "protected-decorated-method",
-              "private-decorated-method",
-              "public-instance-method",
-              "protected-instance-method",
-              "private-instance-method",
-              "public-abstract-method",
-              "protected-abstract-method"
-            ]
           }
         ],
         "@typescript-eslint/no-useless-constructor": "error",
@@ -146,10 +102,7 @@
         "@typescript-eslint/no-explicit-any": "error",
         "@typescript-eslint/no-require-imports": "warn",
         "@typescript-eslint/no-unnecessary-type-assertion": "warn",
-        "@typescript-eslint/no-this-alias": [
-          "error",
-          { "allowDestructuring": true }
-        ],
+        "@typescript-eslint/no-this-alias": ["error", { "allowDestructuring": true }],
         "@typescript-eslint/prefer-enum-initializers": "warn",
         "@typescript-eslint/naming-convention": [
           "error",

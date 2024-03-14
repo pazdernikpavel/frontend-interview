@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+
+import { Store } from '@ngrx/store';
+
+import { selectIsAuthenticated } from '@app/auth/store/auth.selectors';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +10,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  public title = 'test-app';
+  private store = inject(Store);
+  public isAuthenticated = this.store.selectSignal(selectIsAuthenticated);
 }

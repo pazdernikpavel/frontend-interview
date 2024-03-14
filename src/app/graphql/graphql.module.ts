@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { isDevMode, NgModule } from '@angular/core';
 
 import {
@@ -36,7 +37,7 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<unknown> {
 }
 
 @NgModule({
-  imports: [ApolloModule],
+  imports: [ApolloModule, HttpClientModule],
   providers: [
     {
       provide: APOLLO_OPTIONS,
