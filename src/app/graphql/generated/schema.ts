@@ -12,10 +12,9 @@ export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
   [SubKey in K]: Maybe<T[SubKey]>;
 };
-export type MakeEmpty<
-  T extends { [key: string]: unknown },
-  K extends keyof T,
-> = { [_ in K]?: never };
+export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = {
+  [_ in K]?: never;
+};
 export type Incremental<T> =
   | T
   | {
@@ -307,10 +306,7 @@ export const LoginDocument = gql`
 @Injectable({
   providedIn: 'root',
 })
-export class LoginGQL extends Apollo.Mutation<
-  LoginMutation,
-  LoginMutationVariables
-> {
+export class LoginGQL extends Apollo.Mutation<LoginMutation, LoginMutationVariables> {
   override document = LoginDocument;
 
   constructor(apollo: Apollo.Apollo) {
@@ -329,10 +325,7 @@ export const SignUpDocument = gql`
 @Injectable({
   providedIn: 'root',
 })
-export class SignUpGQL extends Apollo.Mutation<
-  SignUpMutation,
-  SignUpMutationVariables
-> {
+export class SignUpGQL extends Apollo.Mutation<SignUpMutation, SignUpMutationVariables> {
   override document = SignUpDocument;
 
   constructor(apollo: Apollo.Apollo) {
