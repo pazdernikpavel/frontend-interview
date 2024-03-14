@@ -1,12 +1,15 @@
 {
   "name": "test-app",
-  "version": "0.0.0",
+  "version": "0.0.0-NOT_USED",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "lint": "ng lint",
+    "lint:fix": "ng lint --fix",
+    "prettify": "prettier --write ./src",
     "generate-schema": "graphql-codegen"
   },
   "private": true,
@@ -32,14 +35,23 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.2.3",
+    "@angular-eslint/builder": "^17.2.1",
+    "@angular-eslint/eslint-plugin": "^17.2.1",
+    "@angular-eslint/eslint-plugin-template": "^17.2.1",
+    "@angular-eslint/template-parser": "^17.2.1",
     "@angular/cli": "~17.2.3",
     "@angular/compiler-cli": "^17.2.4",
     "@graphql-codegen/cli": "^5.0.2",
     "@graphql-codegen/typescript": "^4.0.6",
     "@graphql-codegen/typescript-apollo-angular": "^4.0.0",
     "@graphql-codegen/typescript-operations": "^4.2.0",
+    "@ngrx/eslint-plugin": "^17.1.1",
     "@schematics/angular": "^17.2.3",
     "@types/jasmine": "~4.3.0",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-import": "^2.29.1",
     "graphql-request": "^6.1.0",
     "graphql-tag": "^2.12.6",
     "jasmine-core": "~4.6.0",
@@ -48,6 +60,8 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "prettier": "^3.2.5",
     "typescript": "~5.3.3"
   }
 }
+

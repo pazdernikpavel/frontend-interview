@@ -5,6 +5,9 @@ const config: CodegenConfig = {
   documents: 'src/app/graphql/queries/**/*.graphql',
   generates: {
     'src/app/graphql/generated/schema.ts': {
+      config: {
+        addExplicitOverride: true,
+      },
       plugins: [
         'typescript',
         'typescript-operations',
