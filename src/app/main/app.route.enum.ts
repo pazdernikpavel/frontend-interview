@@ -1,3 +1,5 @@
 export enum AppRoute {
-  Transactions = 'transactions',
+  Auth = 'auth',
+  Transaction = 'transaction',
+  NotFound = 'not-found',
 }

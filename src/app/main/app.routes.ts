@@ -1,3 +1,36 @@
 import { Routes } from '@angular/router';
 
-export const appRoutes: Routes = [];
+import { authGuard } from '@app/auth/guards/auth.guard';
+import { AppRoute } from './app.route.enum';
+
+export const appRoutes: Routes = [
+  {
+    path: AppRoute.Auth,
+    loadChildren: () => import('../auth/auth-lazy.module').then(m => m.AuthLazyModule),
+  },
+  {
+    path: '',
+    canActivate: [authGuard()],
+    children: [
+      {
+        path: AppRoute.Transaction,
+        loadChildren: () =>
+          import('../pages/transaction/transaction.module').then(m => m.TransactionModule),
+      },
+      {
+        path: AppRoute.NotFound,
+        loadChildren: () =>
+          import('../pages/not-found/not-found.module').then(m => m.NotFoundModule),
+      },
+      {
+        path: '',
+        redirectTo: AppRoute.Transaction,
+        pathMatch: 'full',
+      },
+      {
+        path: '**',
+        redirectTo: AppRoute.NotFound,
+      },
+    ],
+  },
+];

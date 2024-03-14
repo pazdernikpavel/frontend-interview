@@ -14,8 +14,6 @@ export type MutationType<T extends Mutation<any, any>> =
   ReturnType<T['mutate']> extends Observable<MutationResult<infer R>> ? R : never;
 export type MutationVariablesType<T> = T extends Mutation<any, infer V> ? V : EmptyObject;
 
-export type Unpacked<T> = T extends (infer U)[] ? U : T;
-
 /**
  * Fetches query, maps result with success action or error with error action
  */

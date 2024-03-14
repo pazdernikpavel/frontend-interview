@@ -10,4 +10,3 @@ import { authReducerSlice } from './store/auth.reducer';
   imports: [StoreModule.forFeature(authReducerSlice), EffectsModule.forFeature(authEffects)],
 })
 export class AuthModule {}
-

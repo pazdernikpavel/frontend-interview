@@ -14,7 +14,7 @@ import { HttpLink } from 'apollo-angular/http';
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<unknown> {
   const linksToUse: (ApolloLink | RequestHandler)[] = [];
 
-  /* Apply HTTP link. Order does matter. HTTP link must be the last one. */
+  // Apply HTTP link. Order does matter. HTTP link must be the last one.
   linksToUse.push(httpLink.create({ uri: '/graphql' }));
 
   const defaultOptions: DefaultOptions = {
