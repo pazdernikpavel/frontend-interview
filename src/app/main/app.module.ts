@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
+import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NbLayoutModule, NbThemeModule, NbToastrModule } from '@nebular/theme';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
@@ -34,6 +35,7 @@ const storeDevtoolsOptions: StoreDevtoolsOptions = {
     StoreRouterConnectingModule.forRoot(),
     NbThemeModule.forRoot({ name: 'dark' }),
     NbToastrModule.forRoot(),
+    NbEvaIconsModule,
     NbLayoutModule,
     GraphQLModule,
     AuthModule,

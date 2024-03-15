@@ -7,7 +7,6 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { authRoutes } from './routing/auth.routes';
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(authRoutes)],
-  declarations: [LoginComponent, SignUpComponent],
+  imports: [CommonModule, RouterModule.forChild(authRoutes), LoginComponent, SignUpComponent],
 })
 export class AuthLazyModule {}

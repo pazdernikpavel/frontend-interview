@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
+  selector: 'app-validation-message',
+  templateUrl: './validation-message.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
-export class SignUpComponent {}
+export class ValidationMessageComponent {}

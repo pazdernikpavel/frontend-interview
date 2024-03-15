@@ -1,0 +1,22 @@
+<nb-form-field>
+  <input
+    nbInput
+    class="w-full !max-w-none"
+    [type]="computedType()"
+    [status]="controlStatus()"
+    [formControl]="control()" />
+  @if (isSecret()) {
+    <button
+      type="button"
+      nbSuffix
+      nbButton
+      ghost>
+      <nb-icon
+        [icon]="showSecret() ? 'eye-outline' : 'eye-off-2-outline'"
+        pack="eva"
+        [attr.aria-label]="showSecret() ? 'hide password' : 'show password'"
+        (click)="toggleSecret()">
+      </nb-icon>
+    </button>
+  }
+</nb-form-field>

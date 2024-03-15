@@ -1,0 +1,8 @@
+<button
+  nbButton
+  status="primary"
+  class="w-full relative"
+  [nbSpinner]="isLoading()"
+  [disabled]="isLoading()">
+  <ng-content></ng-content>
+</button>

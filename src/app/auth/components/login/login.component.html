@@ -1,1 +1,50 @@
-<p>login works!</p>
+<div class="flex flex-col w-full h-full items-center justify-center relative">
+  <nb-card class="w-80">
+    <nb-card-body>
+      <app-form-group
+        [form]="loginForm"
+        (formSubmit)="submit()">
+        <!-- Email input -->
+        @if (loginForm.controls.email; as emailControl) {
+          <app-form-control>
+            <app-label>E-mail</app-label>
+            <app-input
+              [control]="emailControl"
+              name="E-mail">
+            </app-input>
+            @if (emailControl.hasError('required') && emailControl.touched) {
+              <app-validation-message> E-mail is required. </app-validation-message>
+            } @else if (emailControl.hasError('email') && emailControl.touched) {
+              <app-validation-message> Invalid e-mail format. </app-validation-message>
+            }
+          </app-form-control>
+        }
+
+        <!-- Password input -->
+        @if (loginForm.controls.password; as passwordControl) {
+          <app-form-control>
+            <app-label>Password</app-label>
+            <app-input
+              [control]="passwordControl"
+              [isSecret]="true"
+              name="Password">
+            </app-input>
+            @if (passwordControl.hasError('required') && passwordControl.touched) {
+              <app-validation-message> Password is required. </app-validation-message>
+            }
+          </app-form-control>
+        }
+
+        <!-- Submit button -->
+        <app-button [isLoading]="false">Sign-in</app-button>
+
+        <!-- Redirect link -->
+        <span
+          [routerLink]="['/', appRoute.Auth, authRoute.SignUp]"
+          class="caption-2 self-center cursor-pointer">
+          Or create a new account <span class="underline">here.</span>
+        </span>
+      </app-form-group>
+    </nb-card-body>
+  </nb-card>
+</div>
