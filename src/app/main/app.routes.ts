@@ -18,18 +18,8 @@ export const appRoutes: Routes = [
           import('../pages/transaction/transaction.module').then(m => m.TransactionModule),
       },
       {
-        path: AppRoute.NotFound,
-        loadChildren: () =>
-          import('../pages/not-found/not-found.module').then(m => m.NotFoundModule),
-      },
-      {
-        path: '',
-        redirectTo: AppRoute.Transaction,
-        pathMatch: 'full',
-      },
-      {
         path: '**',
-        redirectTo: AppRoute.NotFound,
+        redirectTo: AppRoute.Transaction,
       },
     ],
   },

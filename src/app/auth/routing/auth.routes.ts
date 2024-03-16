@@ -18,8 +18,4 @@ export const authRoutes: Routes = [
     path: AuthRoute.Login,
     component: LoginComponent,
   },
-  {
-    path: '**',
-    redirectTo: AuthRoute.Login,
-  },
 ];
