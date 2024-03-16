@@ -24,4 +24,3 @@ export class MeteorComponent {
     return Math.floor(Math.random() * (10 - 2) + 2) + 's';
   }
 }
-

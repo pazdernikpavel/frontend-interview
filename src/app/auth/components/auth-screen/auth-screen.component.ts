@@ -13,4 +13,3 @@ import { MeteorComponent } from '@app/shared/partials/meteor/meteor.component';
   imports: [NbCardModule, MeteorComponent],
 })
 export class AuthScreenComponent {}
-
