@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { NbCardModule } from '@nebular/theme';
 import { Store } from '@ngrx/store';
 
 import { AuthRoute } from '@app/auth/routing/auth.route.enum';
@@ -16,6 +15,7 @@ import { InputComponent } from '@app/shared/forms/input/input.component';
 import { LabelComponent } from '@app/shared/forms/label/label.component';
 import { ValidationMessageComponent } from '@app/shared/forms/validation-message/validation-message.component';
 import { updateValueAndValidity } from '@app/shared/utils/form.utils';
+import { AuthScreenComponent } from '../auth-screen/auth-screen.component';
 
 @Component({
   selector: 'app-login',
@@ -23,9 +23,9 @@ import { updateValueAndValidity } from '@app/shared/utils/form.utils';
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [
+    AuthScreenComponent,
     ReactiveFormsModule,
     RouterModule,
-    NbCardModule,
     FormGroupComponent,
     FormControlComponent,
     LabelComponent,

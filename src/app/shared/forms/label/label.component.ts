@@ -10,4 +10,5 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 })
 export class LabelComponent {
   public isRequired = input(false);
+  public for = input<string>();
 }

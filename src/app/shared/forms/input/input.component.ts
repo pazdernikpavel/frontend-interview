@@ -19,6 +19,7 @@ type SupportedInputType = 'password' | 'text';
   standalone: true,
 })
 export class InputComponent {
+  public readonly name = input<string>();
   public readonly control = input.required<FormControl>();
   public readonly isSecret = input(false);
   public readonly showSecret = signal(false);

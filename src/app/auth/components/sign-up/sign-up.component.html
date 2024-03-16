@@ -1,1 +1,63 @@
-<p>sign-up works!</p>
+<app-auth-screen>
+  <app-form-group
+    [form]="signUpForm"
+    (formSubmit)="submit()">
+    <!-- Email input -->
+    @if (signUpForm.controls.email; as emailControl) {
+      <app-form-control>
+        <app-label for="email">E-mail</app-label>
+        <app-input
+          [control]="emailControl"
+          name="email">
+        </app-input>
+        @if (emailControl.hasError('required') && emailControl.touched) {
+          <app-validation-message> E-mail is required. </app-validation-message>
+        } @else if (emailControl.hasError('pattern') && emailControl.touched) {
+          <app-validation-message> Invalid e-mail format. </app-validation-message>
+        }
+      </app-form-control>
+    }
+
+    <!-- Password input -->
+    @if (signUpForm.controls.password; as passwordControl) {
+      <app-form-control>
+        <app-label for="password">Password</app-label>
+        <app-input
+          [control]="passwordControl"
+          type="password"
+          name="password">
+        </app-input>
+        @if (passwordControl.hasError('required') && passwordControl.touched) {
+          <app-validation-message> Password is required. </app-validation-message>
+        }
+      </app-form-control>
+    }
+
+    <!-- Confirm password input -->
+    @if (signUpForm.controls.passwordConfirm; as passwordConfirmControl) {
+      <app-form-control>
+        <app-label for="confirmPassword">Confirm Password</app-label>
+        <app-input
+          [control]="passwordConfirmControl"
+          type="password"
+          name="confirmPassword">
+        </app-input>
+        @if (passwordConfirmControl.hasError('required') && passwordConfirmControl.touched) {
+          <app-validation-message> Password confirmation is required. </app-validation-message>
+        } @else if (signUpForm.hasError('confirmPassword') && passwordConfirmControl.touched) {
+          <app-validation-message> Mismatching passwords. </app-validation-message>
+        }
+      </app-form-control>
+    }
+
+    <!-- Submit button -->
+    <app-button [isLoading]="isAuthenticating()">Sign-up now</app-button>
+
+    <!-- Redirect link -->
+    <span
+      [routerLink]="['/', appRoute.Auth, authRoute.Login]"
+      class="caption-2 self-center cursor-pointer">
+      Or sign-in using an existing account <span class="underline">here.</span>
+    </span>
+  </app-form-group>
+</app-auth-screen>

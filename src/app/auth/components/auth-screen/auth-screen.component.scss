@@ -1,0 +1,6 @@
+::ng-deep {
+  app-button,
+  app-form-control {
+    @apply z-10;
+  }
+}

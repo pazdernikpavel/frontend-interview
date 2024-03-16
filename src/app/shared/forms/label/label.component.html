@@ -1,6 +1,6 @@
-<span>
+<label [for]="for()">
   <ng-content></ng-content>
   @if (isRequired()) {
     <span class="text-danger-600">*</span>
   }
-</span>
+</label>
