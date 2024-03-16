@@ -1,8 +1,17 @@
 import { FeatureSlice, createReducer, on } from '@ngrx/store';
+import { jwtDecode } from 'jwt-decode';
 
 import { Maybe, TokensTypeFragment } from '@app/graphql/generated/schema';
 import { loginActions } from './actions/login.actions';
+import { persistanceActions } from './actions/persistance.actions';
 import { signUpActions } from './actions/sign-up.actions';
+
+export type JwtPayload = {
+  sub: string;
+  email: string;
+  iat: number;
+  exp: number;
+};
 
 export type User = {
   email: string;
@@ -40,11 +49,20 @@ export const authReducer = createReducer(
   on(
     signUpActions.success,
     loginActions.success,
-    (state): AuthState => ({
-      ...state,
-      isAuthenticating: false,
-      attemptedToAuthenticate: true,
-    }),
+    persistanceActions.tokensLoaded,
+    (state, { tokens }): AuthState => {
+      const { access_token } = tokens;
+      const { email } = jwtDecode<JwtPayload>(access_token);
+      return {
+        ...state,
+        isAuthenticating: false,
+        attemptedToAuthenticate: true,
+        user: {
+          email,
+          tokens,
+        },
+      };
+    },
   ),
 
   on(
@@ -54,6 +72,14 @@ export const authReducer = createReducer(
       ...state,
       failedToAuthenticate: true,
       isAuthenticating: false,
+      attemptedToAuthenticate: true,
+    }),
+  ),
+
+  on(
+    persistanceActions.failedToLoadTokens,
+    (state): AuthState => ({
+      ...state,
       attemptedToAuthenticate: true,
     }),
   ),

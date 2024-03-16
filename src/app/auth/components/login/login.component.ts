@@ -7,6 +7,7 @@ import { Store } from '@ngrx/store';
 
 import { AuthRoute } from '@app/auth/routing/auth.route.enum';
 import { loginActions } from '@app/auth/store/actions/login.actions';
+import { selectIsAuthenticating } from '@app/auth/store/auth.selectors';
 import { AppRoute } from '@app/main/app.route.enum';
 import { ButtonComponent } from '@app/shared/forms/button/button.component';
 import { FormControlComponent } from '@app/shared/forms/form-control/form-control.component';
@@ -34,8 +35,11 @@ import { updateValueAndValidity } from '@app/shared/utils/form.utils';
   ],
 })
 export class LoginComponent {
+  private readonly store = inject(Store);
+
   public readonly appRoute = AppRoute;
   public readonly authRoute = AuthRoute;
+  public readonly isAuthenticating = this.store.selectSignal(selectIsAuthenticating);
   public readonly loginForm = new FormGroup({
     email: new FormControl('', {
       nonNullable: true,
@@ -46,8 +50,6 @@ export class LoginComponent {
       validators: [Validators.required],
     }),
   });
-
-  private readonly store = inject(Store);
 
   public submit(): void {
     if (this.loginForm.valid) {

@@ -4,7 +4,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
 import { NbEvaIconsModule } from '@nebular/eva-icons';
-import { NbLayoutModule, NbThemeModule, NbToastrModule } from '@nebular/theme';
+import {
+  NbGlobalPhysicalPosition,
+  NbLayoutModule,
+  NbThemeModule,
+  NbThemeOptions,
+  NbToastrConfig,
+  NbToastrModule,
+} from '@nebular/theme';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
@@ -16,11 +23,23 @@ import { appEffects } from '@app/store/app.effects';
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
 
+/** NgRx store browser dev tools config. */
 const storeDevtoolsOptions: StoreDevtoolsOptions = {
   maxAge: 25,
   traceLimit: 75,
   logOnly: !isDevMode(),
   connectInZone: true,
+};
+
+/** Nebular notification config. */
+const nbToastrOptions: Partial<NbToastrConfig> = {
+  duration: 5_000,
+  position: NbGlobalPhysicalPosition.TOP_RIGHT,
+};
+
+/** Nebular theming setup. */
+const nbThemeOptions: NbThemeOptions = {
+  name: 'dark',
 };
 
 @NgModule({
@@ -29,12 +48,12 @@ const storeDevtoolsOptions: StoreDevtoolsOptions = {
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
-    StoreModule.forRoot({}),
+    StoreModule.forRoot(),
     EffectsModule.forRoot(appEffects),
     StoreDevtoolsModule.instrument(storeDevtoolsOptions),
     StoreRouterConnectingModule.forRoot(),
-    NbThemeModule.forRoot({ name: 'dark' }),
-    NbToastrModule.forRoot(),
+    NbThemeModule.forRoot(nbThemeOptions),
+    NbToastrModule.forRoot(nbToastrOptions),
     NbEvaIconsModule,
     NbLayoutModule,
     GraphQLModule,

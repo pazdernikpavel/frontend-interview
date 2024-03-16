@@ -6,7 +6,7 @@ export const loginActions = createActionGroup({
   source: 'Login',
   events: {
     start: props<{ request: UserInput }>(),
-    success: props<{ response: TokensTypeFragment }>(),
+    success: props<{ tokens: TokensTypeFragment }>(),
     error: props<{ message: string }>(),
   },
 });
