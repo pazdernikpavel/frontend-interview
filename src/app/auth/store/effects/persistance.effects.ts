@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 
 import { Actions, OnInitEffects, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
-import { map, tap } from 'rxjs/operators';
+import { concatMap, map, tap } from 'rxjs/operators';
 
 import { TokensTypeFragment } from '@app/graphql/generated/schema';
 import { ROOT_PATH, navigationActions } from '@app/store/actions/navigation.actions';
@@ -28,19 +28,28 @@ export class PersistanceEffects implements OnInitEffects {
     { dispatch: false },
   );
 
+  public readonly removeTokens$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(persistanceActions.removeTokens),
+        tap(() => localStorage.removeItem(JWT_LOCAL_STORAGE_KEY)),
+      ),
+    { dispatch: false },
+  );
+
   public readonly loadTokens$ = createEffect(() =>
     this.actions$.pipe(
       ofType(persistanceActions.loadTokens),
-      map(() => {
+      concatMap(() => {
         try {
           const payload = localStorage.getItem(JWT_LOCAL_STORAGE_KEY);
           if (!payload) {
-            return persistanceActions.failedToLoadTokens();
+            return [persistanceActions.failedToLoadTokens()];
           }
           const tokens: TokensTypeFragment = JSON.parse(payload);
-          return persistanceActions.tokensLoaded({ tokens });
+          return [persistanceActions.tokensLoaded({ tokens })];
         } catch (_) {
-          return persistanceActions.failedToLoadTokens();
+          return [persistanceActions.removeTokens(), persistanceActions.failedToLoadTokens()];
         }
       }),
     ),

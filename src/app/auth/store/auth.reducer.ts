@@ -3,6 +3,7 @@ import { jwtDecode } from 'jwt-decode';
 
 import { Maybe, TokensTypeFragment } from '@app/graphql/generated/schema';
 import { loginActions } from './actions/login.actions';
+import { logoutActions } from './actions/logout.actions';
 import { persistanceActions } from './actions/persistance.actions';
 import { signUpActions } from './actions/sign-up.actions';
 
@@ -80,6 +81,14 @@ export const authReducer = createReducer(
     persistanceActions.failedToLoadTokens,
     (state): AuthState => ({
       ...state,
+      attemptedToAuthenticate: true,
+    }),
+  ),
+
+  on(
+    logoutActions.logoutUser,
+    (): AuthState => ({
+      ...initialState,
       attemptedToAuthenticate: true,
     }),
   ),

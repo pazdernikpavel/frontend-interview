@@ -5,12 +5,15 @@ import { RouterModule } from '@angular/router';
 
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import {
+  NbContextMenuModule,
   NbGlobalPhysicalPosition,
   NbLayoutModule,
+  NbMenuModule,
   NbThemeModule,
   NbThemeOptions,
   NbToastrConfig,
   NbToastrModule,
+  NbUserModule,
 } from '@nebular/theme';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
@@ -54,8 +57,11 @@ const nbThemeOptions: NbThemeOptions = {
     StoreRouterConnectingModule.forRoot(),
     NbThemeModule.forRoot(nbThemeOptions),
     NbToastrModule.forRoot(nbToastrOptions),
+    NbMenuModule.forRoot(),
     NbEvaIconsModule,
     NbLayoutModule,
+    NbUserModule,
+    NbContextMenuModule,
     GraphQLModule,
     AuthModule,
   ],

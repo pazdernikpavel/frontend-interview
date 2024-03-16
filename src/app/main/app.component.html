@@ -1,6 +1,15 @@
 <nb-layout>
   @if (isAuthenticated()) {
-    <nb-layout-header>Test App</nb-layout-header>
+    <nb-layout-header class="flex w-full">
+      <span>Test App</span>
+      <nb-user
+        [name]="userEmail()"
+        [nbContextMenu]="items"
+        [nbContextMenuTag]="menuTag"
+        ariaLabel="User icon and context menu"
+        class="ml-auto">
+      </nb-user>
+    </nb-layout-header>
   }
   <nb-layout-column>
     <router-outlet></router-outlet>

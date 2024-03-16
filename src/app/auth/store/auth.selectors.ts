@@ -15,3 +15,5 @@ export const selectFailedToAuthenticate = createSelector(
 );
 
 export const selectIsAuthenticated = createSelector(selectAuthState, state => !!state.user);
+
+export const selectUserEmail = createSelector(selectAuthState, state => state.user?.email ?? '');

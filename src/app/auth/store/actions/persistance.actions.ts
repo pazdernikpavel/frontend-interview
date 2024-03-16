@@ -6,6 +6,7 @@ export const persistanceActions = createActionGroup({
   source: 'Persistance',
   events: {
     persistTokens: props<{ tokens: TokensTypeFragment }>(),
+    removeTokens: emptyProps(),
     loadTokens: emptyProps(),
     tokensLoaded: props<{ tokens: TokensTypeFragment }>(),
     failedToLoadTokens: emptyProps(),
