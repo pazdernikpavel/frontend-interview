@@ -1,6 +1,6 @@
-import { CreateTransactionEffects } from './effects/create-category.effects';
-import { DeleteTransactionEffects } from './effects/delete-category.effects';
-import { GetTransactionsEffects } from './effects/get-categories.effects';
+import { CreateTransactionEffects } from './effects/create-transaction.effects';
+import { DeleteTransactionEffects } from './effects/delete-transaction.effects';
+import { GetTransactionsEffects } from './effects/get-transactions.effects';
 
 export const transactionEffects = [
   GetTransactionsEffects,
