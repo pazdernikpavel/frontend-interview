@@ -1,9 +1,22 @@
-<!-- TODO: Table could possible use pagination/virtual scroll with larger data set. -->
+<div class="flex justify-end">
+  <button
+    nbButton
+    size="small"
+    (click)="openCreateTransactionModal()">
+    <nb-icon icon="plus-outline"></nb-icon>
+    Create transaction
+  </button>
+</div>
 
+<!-- TODO: Table could possible use pagination/virtual scroll with larger data set. -->
 <div
   app-table-container
   [nbSpinner]="isFetchingList()">
-  <table app-table>
+  <table
+    app-table
+    #transactionTable
+    [appData]="transactions()"
+    appNoRecords="No transactions found, start adding new transactions.">
     <thead app-table-head>
       <tr app-table-header-row>
         <th
@@ -26,7 +39,7 @@
       </tr>
     </thead>
     <tbody app-table-body>
-      @for (item of transactions(); track $index) {
+      @for (item of transactionTable.appData(); track $index) {
         <tr app-table-body-row>
           <td
             app-table-body-cell
@@ -52,7 +65,7 @@
           <td app-table-body-cell>
             {{ item.date | date: 'dd/MM/yy' }}
           </td>
-          <td app-table-body-cell>{{ item.amount }} EUR</td>
+          <td app-table-body-cell>{{ item.amount | currency: 'EUR' }}</td>
           <td app-table-body-cell>
             {{ getCategoryName(item.categoryId)() }}
           </td>
@@ -75,7 +88,6 @@
               nbButton
               ghost
               status="danger"
-              aria-label="Remove transaction"
               [nbPopover]="removeTransactionPopover"
               nbPopoverTrigger="click"
               nbPopoverPlacement="bottom">

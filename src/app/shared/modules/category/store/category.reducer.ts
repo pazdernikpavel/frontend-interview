@@ -2,12 +2,10 @@ import { FeatureSlice, createReducer, on } from '@ngrx/store';
 
 import { Category, Maybe } from '@app/graphql/generated/schema';
 import { createCategoryActions } from './actions/create-category.actions';
-import { deleteCategoryActions } from './actions/delete-category.actions';
 import { getCategoriesActions } from './actions/get-categories.actions';
 
 export type CategoryState = {
   isCreating: boolean;
-  isDeleting: boolean;
   isFetchingList: boolean;
   categories: Category[];
   expectedError: Maybe<string>;
@@ -16,7 +14,6 @@ export type CategoryState = {
 
 export const initialState: CategoryState = {
   isCreating: false,
-  isDeleting: false,
   isFetchingList: false,
   categories: [],
   expectedError: null,
@@ -53,37 +50,6 @@ export const categoryReducer = createReducer(
       categories: state.categories.concat(response),
     }),
   ),
-
-  on(
-    deleteCategoryActions.start,
-    (state): CategoryState => ({
-      ...state,
-      isDeleting: true,
-    }),
-  ),
-
-  on(
-    deleteCategoryActions.error,
-    (state, { message }): CategoryState => ({
-      ...state,
-      isDeleting: false,
-      expectedError: message,
-    }),
-  ),
-
-  on(deleteCategoryActions.success, (state, { response }): CategoryState => {
-    let newCategories = [...state.categories];
-
-    if (response) {
-      newCategories = newCategories.filter(category => category.id !== response.id);
-    }
-
-    return {
-      ...state,
-      isDeleting: false,
-      categories: newCategories,
-    };
-  }),
 
   on(
     getCategoriesActions.start,

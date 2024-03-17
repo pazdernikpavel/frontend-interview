@@ -1,10 +1,11 @@
 import { Injectable, inject } from '@angular/core';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { exhaustMap } from 'rxjs/operators';
+import { exhaustMap, map } from 'rxjs/operators';
 
 import { GetTransactionsGQL, TransactionRecordTypeFragment } from '@app/graphql/generated/schema';
 import { fetchQuery } from '@app/graphql/graphql.utils';
+import { getCategoriesActions } from '@app/shared/modules/category/store/actions/get-categories.actions';
 import { getTransactionsActions } from '../actions/get-transactions.actions';
 
 @Injectable()
@@ -26,6 +27,13 @@ export class GetTransactionsEffects {
           error => getTransactionsActions.error({ message: error }),
         ),
       ),
+    ),
+  );
+
+  public readonly fetchCategories$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getTransactionsActions.start),
+      map(() => getCategoriesActions.start()),
     ),
   );
 }

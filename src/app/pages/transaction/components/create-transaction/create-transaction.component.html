@@ -1,0 +1,111 @@
+<nb-card class="w-full sm:w-[450px]">
+  <nb-card-body>
+    <app-form-group
+      [appForm]="createTransactionForm"
+      (appFormSubmit)="submitModal()">
+      <!-- Type input -->
+      @if (createTransactionForm.controls.type; as typeControl) {
+        <app-form-control>
+          <app-label [appIsRequired]="true"> Type </app-label>
+          <app-button-group
+            [appControl]="typeControl"
+            [appItems]="typeOptions">
+          </app-button-group>
+          @if (typeControl.hasError('required') && typeControl.touched) {
+            <app-validation-message>Transaction type is required</app-validation-message>
+          }
+        </app-form-control>
+      }
+
+      <!-- Title input -->
+      @if (createTransactionForm.controls.title; as titleControl) {
+        <app-form-control>
+          <app-label
+            appFor="title"
+            [appIsRequired]="true">
+            Title
+          </app-label>
+          <app-input
+            [appControl]="titleControl"
+            appName="title">
+          </app-input>
+          @if (titleControl.hasError('required') && titleControl.touched) {
+            <app-validation-message>Title is required</app-validation-message>
+          }
+        </app-form-control>
+      }
+
+      <!-- Date input -->
+      @if (createTransactionForm.controls.date; as dateControl) {
+        <app-form-control>
+          <app-label
+            appFor="amount"
+            [appIsRequired]="true">
+            Date
+          </app-label>
+          <app-datepicker [appControl]="dateControl"></app-datepicker>
+          @if (dateControl.hasError('required') && dateControl.touched) {
+            <app-validation-message>Date is required</app-validation-message>
+          }
+        </app-form-control>
+      }
+
+      <!-- Amount input -->
+      @if (createTransactionForm.controls.amount; as amountControl) {
+        <app-form-control>
+          <app-label [appIsRequired]="true"> Amount </app-label>
+          <app-input
+            [appControl]="amountControl"
+            appType="number"
+            appName="amount">
+          </app-input>
+          @if (amountControl.hasError('required') && amountControl.touched) {
+            <app-validation-message>Amount is required</app-validation-message>
+          } @else if (amountControl.hasError('min') && amountControl.touched) {
+            <app-validation-message>
+              Amount has to be greater or equal than 0.1
+            </app-validation-message>
+          }
+        </app-form-control>
+      }
+
+      <!-- Category input -->
+      @if (createTransactionForm.controls.categoryId; as categoryControl) {
+        <app-form-control>
+          <app-label [appIsRequired]="true">Category</app-label>
+          <app-category-select [appControl]="categoryControl"></app-category-select>
+          @if (categoryControl.hasError('required') && categoryControl.touched) {
+            <app-validation-message>Category is required</app-validation-message>
+          }
+        </app-form-control>
+      }
+
+      <!-- Description input -->
+      @if (createTransactionForm.controls.description; as descriptionControl) {
+        <app-form-control>
+          <app-label appFor="description"> Description </app-label>
+          <app-input
+            [appControl]="descriptionControl"
+            appName="description">
+          </app-input>
+        </app-form-control>
+      }
+
+      <app-form-actions>
+        <button
+          nbButton
+          size="small"
+          type="button"
+          (click)="closeModal()">
+          Cancel
+        </button>
+        <button
+          nbButton
+          size="small"
+          status="primary">
+          Create
+        </button>
+      </app-form-actions>
+    </app-form-group>
+  </nb-card-body>
+</nb-card>

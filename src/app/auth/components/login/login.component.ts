@@ -2,13 +2,13 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+import { NbButtonModule, NbSpinnerModule } from '@nebular/theme';
 import { Store } from '@ngrx/store';
 
 import { AuthRoute } from '@app/auth/routing/auth.route.enum';
 import { loginActions } from '@app/auth/store/actions/login.actions';
 import { selectIsAuthenticating } from '@app/auth/store/auth.selectors';
 import { AppRoute } from '@app/main/app.route.enum';
-import { ButtonComponent } from '@app/shared/forms/button/button.component';
 import { FormControlComponent } from '@app/shared/forms/form-control/form-control.component';
 import { FormGroupComponent } from '@app/shared/forms/form-group/form-group.component';
 import { InputComponent } from '@app/shared/forms/input/input.component';
@@ -24,13 +24,14 @@ import { AuthScreenComponent } from '../auth-screen/auth-screen.component';
   standalone: true,
   imports: [
     AuthScreenComponent,
+    NbSpinnerModule,
+    NbButtonModule,
     ReactiveFormsModule,
     RouterModule,
     FormGroupComponent,
     FormControlComponent,
     LabelComponent,
     InputComponent,
-    ButtonComponent,
     ValidationMessageComponent,
   ],
 })

@@ -1,1 +1,11 @@
 <ng-content></ng-content>
+
+@if (appData() && appData().length === 0) {
+  <tbody>
+    <tr class="w-full relative h-16">
+      <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        {{ appNoRecords() }}
+      </span>
+    </tr>
+  </tbody>
+}

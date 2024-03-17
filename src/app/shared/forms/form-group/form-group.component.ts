@@ -12,5 +12,5 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 })
 export class FormGroupComponent {
   @Output() public readonly appFormSubmit = new EventEmitter<void>();
-  public form = input.required<FormGroup>();
+  public appForm = input.required<FormGroup>();
 }

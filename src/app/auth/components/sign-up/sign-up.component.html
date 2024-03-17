@@ -1,19 +1,19 @@
 <app-auth-screen>
   <app-form-group
-    [form]="signUpForm"
+    [appForm]="signUpForm"
     (appFormSubmit)="submit()">
     <!-- Email input -->
     @if (signUpForm.controls.email; as emailControl) {
       <app-form-control>
-        <app-label for="email">E-mail</app-label>
+        <app-label appFor="email">E-mail</app-label>
         <app-input
-          [control]="emailControl"
-          name="email">
+          [appControl]="emailControl"
+          appName="email">
         </app-input>
         @if (emailControl.hasError('required') && emailControl.touched) {
-          <app-validation-message> E-mail is required. </app-validation-message>
+          <app-validation-message>E-mail is required</app-validation-message>
         } @else if (emailControl.hasError('pattern') && emailControl.touched) {
-          <app-validation-message> Invalid e-mail format. </app-validation-message>
+          <app-validation-message>Invalid e-mail format</app-validation-message>
         }
       </app-form-control>
     }
@@ -21,14 +21,14 @@
     <!-- Password input -->
     @if (signUpForm.controls.password; as passwordControl) {
       <app-form-control>
-        <app-label for="password">Password</app-label>
+        <app-label appFor="password">Password</app-label>
         <app-input
-          [control]="passwordControl"
-          type="password"
-          name="password">
+          [appControl]="passwordControl"
+          appType="password"
+          appName="password">
         </app-input>
         @if (passwordControl.hasError('required') && passwordControl.touched) {
-          <app-validation-message> Password is required. </app-validation-message>
+          <app-validation-message>Password is required</app-validation-message>
         }
       </app-form-control>
     }
@@ -36,22 +36,29 @@
     <!-- Confirm password input -->
     @if (signUpForm.controls.passwordConfirm; as passwordConfirmControl) {
       <app-form-control>
-        <app-label for="confirmPassword">Confirm Password</app-label>
+        <app-label appFor="confirmPassword">Confirm Password</app-label>
         <app-input
-          [control]="passwordConfirmControl"
-          type="password"
-          name="confirmPassword">
+          [appControl]="passwordConfirmControl"
+          appType="password"
+          appName="confirmPassword">
         </app-input>
         @if (passwordConfirmControl.hasError('required') && passwordConfirmControl.touched) {
-          <app-validation-message> Password confirmation is required. </app-validation-message>
+          <app-validation-message>Password confirmation is required</app-validation-message>
         } @else if (signUpForm.hasError('confirmPassword') && passwordConfirmControl.touched) {
-          <app-validation-message> Mismatching passwords. </app-validation-message>
+          <app-validation-message>Mismatching passwords</app-validation-message>
         }
       </app-form-control>
     }
 
     <!-- Submit button -->
-    <app-button [isLoading]="isAuthenticating()">Sign-up now</app-button>
+    <button
+      nbButton
+      status="primary"
+      class="w-full relative"
+      [nbSpinner]="isAuthenticating()"
+      [disabled]="isAuthenticating()">
+      Sign-up now
+    </button>
 
     <!-- Redirect link -->
     <span

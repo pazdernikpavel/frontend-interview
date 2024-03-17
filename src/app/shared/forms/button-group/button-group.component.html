@@ -1,0 +1,14 @@
+<nb-button-group
+  [status]="controlStatus()"
+  (valueChange)="updateControlValue($event)"
+  outline>
+  @for (item of appItems(); track $index) {
+    <button
+      nbButtonToggle
+      [pressed]="item.value === controlValue()"
+      [value]="item.value"
+      type="button">
+      {{ item.label }}
+    </button>
+  }
+</nb-button-group>

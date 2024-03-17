@@ -9,6 +9,6 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
   standalone: true,
 })
 export class LabelComponent {
-  public isRequired = input(false);
-  public for = input<string>();
+  public appIsRequired = input(false);
+  public appFor = input<string>();
 }

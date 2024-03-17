@@ -6,6 +6,11 @@ export const selectCategoryState = createFeatureSelector<CategoryState>(CATEGORY
 
 export const selectCategoryList = createSelector(selectCategoryState, state => state.categories);
 
+export const selectIsFetchingCategoryList = createSelector(
+  selectCategoryState,
+  state => state.isFetchingList,
+);
+
 export const selectCategoryById = (categoryId: string) =>
   createSelector(
     selectCategoryList,

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 @Component({
   selector: '[app-table]',
@@ -7,4 +7,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
-export class TableComponent {}
+export class TableComponent<T> {
+  public readonly appData = input<T[]>([]);
+  public readonly appNoRecords = input<string>('No records found.');
+}

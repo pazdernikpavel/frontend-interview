@@ -1,7 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 
-import { Actions, OnInitEffects, createEffect, ofType } from '@ngrx/effects';
-import { Action } from '@ngrx/store';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { exhaustMap } from 'rxjs/operators';
 
 import { Category, GetCategoriesGQL } from '@app/graphql/generated/schema';
@@ -9,7 +8,7 @@ import { fetchQuery } from '@app/graphql/graphql.utils';
 import { getCategoriesActions } from '../actions/get-categories.actions';
 
 @Injectable()
-export class GetCategoriesEffects implements OnInitEffects {
+export class GetCategoriesEffects {
   private readonly actions$ = inject(Actions);
   private readonly getCategoriesService = inject(GetCategoriesGQL);
 
@@ -29,8 +28,4 @@ export class GetCategoriesEffects implements OnInitEffects {
       ),
     ),
   );
-
-  public ngrxOnInitEffects(): Action {
-    return getCategoriesActions.start();
-  }
 }

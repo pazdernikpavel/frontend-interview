@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import {
   NbContextMenuModule,
+  NbDatepickerModule,
+  NbDialogModule,
   NbGlobalPhysicalPosition,
   NbLayoutModule,
   NbMenuModule,
@@ -59,6 +61,8 @@ const nbThemeOptions: NbThemeOptions = {
     NbThemeModule.forRoot(nbThemeOptions),
     NbToastrModule.forRoot(nbToastrOptions),
     NbMenuModule.forRoot(),
+    NbDatepickerModule.forRoot(),
+    NbDialogModule.forRoot(),
     NbEvaIconsModule,
     NbLayoutModule,
     NbUserModule,

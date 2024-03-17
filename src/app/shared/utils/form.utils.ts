@@ -2,6 +2,8 @@ import { AbstractControl, FormArray, FormGroup } from '@angular/forms';
 
 export type ControlStatus = 'basic' | 'primary' | 'info' | 'success' | 'warning' | 'danger';
 
+export type SelectItem = { label: string; value: string };
+
 /**
  * Replacement to default .markAllAsTouched() method as it does not work well with nested forms.
  */
@@ -29,3 +31,7 @@ export function getValidatedStatus(
 ): ControlStatus {
   return control.touched && control.invalid ? 'danger' : handler();
 }
+
+/**
+ *
+ */

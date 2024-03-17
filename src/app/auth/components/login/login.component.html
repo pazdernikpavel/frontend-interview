@@ -1,19 +1,19 @@
 <app-auth-screen>
   <app-form-group
-    [form]="loginForm"
+    [appForm]="loginForm"
     (appFormSubmit)="submit()">
     <!-- Email input -->
     @if (loginForm.controls.email; as emailControl) {
       <app-form-control>
-        <app-label for="email">E-mail</app-label>
+        <app-label appFor="email">E-mail</app-label>
         <app-input
-          [control]="emailControl"
-          name="email">
+          [appControl]="emailControl"
+          appName="email">
         </app-input>
         @if (emailControl.hasError('required') && emailControl.touched) {
-          <app-validation-message> E-mail is required. </app-validation-message>
+          <app-validation-message>E-mail is required</app-validation-message>
         } @else if (emailControl.hasError('email') && emailControl.touched) {
-          <app-validation-message> Invalid e-mail format. </app-validation-message>
+          <app-validation-message>Invalid e-mail format</app-validation-message>
         }
       </app-form-control>
     }
@@ -21,20 +21,27 @@
     <!-- Password input -->
     @if (loginForm.controls.password; as passwordControl) {
       <app-form-control>
-        <app-label for="password">Password</app-label>
+        <app-label appFor="password">Password</app-label>
         <app-input
-          [control]="passwordControl"
-          [isSecret]="true"
-          name="password">
+          [appControl]="passwordControl"
+          [appIsSecret]="true"
+          appName="password">
         </app-input>
         @if (passwordControl.hasError('required') && passwordControl.touched) {
-          <app-validation-message> Password is required. </app-validation-message>
+          <app-validation-message>Password is required</app-validation-message>
         }
       </app-form-control>
     }
 
     <!-- Submit button -->
-    <app-button [isLoading]="isAuthenticating()">Sign-in</app-button>
+    <button
+      nbButton
+      status="primary"
+      class="w-full relative"
+      [nbSpinner]="isAuthenticating()"
+      [disabled]="isAuthenticating()">
+      Sign-in
+    </button>
 
     <!-- Redirect link -->
     <span

@@ -2,15 +2,13 @@
 
 import { CommonModule } from '@angular/common';
 import { Component, computed, input, signal } from '@angular/core';
-import { toSignal, toObservable } from '@angular/core/rxjs-interop';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { NbFormFieldModule, NbIconModule, NbInputModule } from '@nebular/theme';
-import { map, switchMap } from 'rxjs';
 
-import { getValidatedStatus } from '@app/shared/utils/form.utils';
+import { FormControlInput } from '../forms.shared';
 
-type SupportedInputType = 'password' | 'text';
+type SupportedInputType = 'password' | 'text' | 'number';
 
 @Component({
   selector: 'app-input',
@@ -18,25 +16,17 @@ type SupportedInputType = 'password' | 'text';
   imports: [CommonModule, ReactiveFormsModule, NbInputModule, NbFormFieldModule, NbIconModule],
   standalone: true,
 })
-export class InputComponent {
-  public readonly name = input<string>();
-  public readonly control = input.required<FormControl>();
-  public readonly isSecret = input(false);
-  public readonly showSecret = signal(false);
-  public readonly type = input<SupportedInputType>('text');
+export class InputComponent extends FormControlInput {
+  public readonly appName = input<string>();
+  public readonly appIsSecret = input(false);
+  public readonly appShowSecret = signal(false);
+  public readonly appType = input<SupportedInputType>('text');
 
   public readonly computedType = computed(() =>
-    this.isSecret() && !this.showSecret() ? 'password' : this.type(),
-  );
-
-  public controlStatus = toSignal(
-    toObservable(this.control).pipe(
-      switchMap(control => control.valueChanges.pipe(map(() => getValidatedStatus(control)))),
-    ),
-    { initialValue: 'basic' },
+    this.appIsSecret() && !this.appShowSecret() ? 'password' : this.appType(),
   );
 
   public toggleSecret(): void {
-    this.showSecret.update(currentValue => !currentValue);
+    this.appShowSecret.update(currentValue => !currentValue);
   }
 }

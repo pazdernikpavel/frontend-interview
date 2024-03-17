@@ -1,0 +1,24 @@
+<div class="flex gap-2">
+  <nb-select
+    class="flex-auto !max-w-none relative"
+    placeholder="Select Category"
+    [status]="controlStatus()"
+    [nbSpinner]="isLoading()"
+    [selected]="controlValue()"
+    (selectedChange)="updateControl($event)">
+    @for (item of categories(); track $index) {
+      <nb-option [value]="item.id">{{ item.title }}</nb-option>
+    }
+  </nb-select>
+
+  <button
+    nbButton
+    ghost
+    type="button"
+    (click)="createCategory()">
+    <nb-icon
+      icon="plus-outline"
+      status="success">
+    </nb-icon>
+  </button>
+</div>

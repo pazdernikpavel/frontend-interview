@@ -22,6 +22,8 @@ I created unit tests just for few files, basically for one of each kind such as 
 
 ## Missing features 😒
 
+- Unexpected error handling on screens
+- Ability to create category
 - Refresh token logic _(that would probably be an extra I did not have any free time left to do, we can discuss on the call)_
 - Responsive design _(this we can discuss on the call as well, however Nebular is missing any responsive component/grid support as far as I know, but we can definitely go through responsive design and I can share my thoughts)_
 

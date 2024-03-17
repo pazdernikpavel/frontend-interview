@@ -14,6 +14,7 @@ import { TransactionType } from '@app/graphql/generated/schema';
 import { selectCategoryById } from '@app/shared/modules/category/store/category.selectors';
 import { PopoverConfirmationComponent } from '@app/shared/partials/popover-confirmation/popover-confirmation.component';
 import { TableModule } from '@app/shared/partials/table/table.module';
+import { createTransactionActions } from '../../store/actions/create-transaction.actions';
 import { deleteTransactionActions } from '../../store/actions/delete-transaction.actions';
 import { getTransactionsActions } from '../../store/actions/get-transactions.actions';
 import {
@@ -24,6 +25,7 @@ import {
 @Component({
   selector: 'app-transaction-list',
   templateUrl: './transaction-list.component.html',
+  host: { class: 'flex flex-col gap-3' },
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [
@@ -59,5 +61,9 @@ export class TransactionListComponent {
 
   public handlePopoverCancel(): void {
     this.popover().hide();
+  }
+
+  public openCreateTransactionModal(): void {
+    this.store.dispatch(createTransactionActions.openModal());
   }
 }

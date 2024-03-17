@@ -2,20 +2,19 @@
   <input
     nbInput
     class="w-full !max-w-none"
-    [id]="name()"
+    [id]="appName()"
     [type]="computedType()"
     [status]="controlStatus()"
-    [formControl]="control()" />
-  @if (isSecret()) {
+    [formControl]="appControl()" />
+  @if (appIsSecret()) {
     <button
       type="button"
       nbSuffix
       nbButton
       ghost>
       <nb-icon
-        [icon]="showSecret() ? 'eye-outline' : 'eye-off-2-outline'"
+        [icon]="appShowSecret() ? 'eye-outline' : 'eye-off-2-outline'"
         pack="eva"
-        [attr.aria-label]="showSecret() ? 'hide password' : 'show password'"
         (click)="toggleSecret()">
       </nb-icon>
     </button>

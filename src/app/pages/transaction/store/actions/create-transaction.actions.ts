@@ -1,4 +1,4 @@
-import { createActionGroup, props } from '@ngrx/store';
+import { createActionGroup, emptyProps, props } from '@ngrx/store';
 
 import {
   CreateTransactionRecordInput,
@@ -8,6 +8,7 @@ import {
 export const createTransactionActions = createActionGroup({
   source: 'Create Transaction',
   events: {
+    openModal: emptyProps(),
     start: props<{ request: CreateTransactionRecordInput }>(),
     success: props<{ response: TransactionRecordTypeFragment }>(),
     error: props<{ message: string }>(),
