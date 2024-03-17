@@ -1,6 +1,7 @@
 # Sloneek test exam ✅
 
-![Unit tests](https://github.com/pazdernikpavel/sloneek-frontend-interview-pazdernik/actions/workflows/lint.yml/badge.svg?branch=master)
+![Linters](https://github.com/pazdernikpavel/sloneek-frontend-interview-pazdernik/actions/workflows/lint.yml/badge.svg?branch=master)
+![Unit tests](https://github.com/pazdernikpavel/sloneek-frontend-interview-pazdernik/actions/workflows/unit-tests.yml/badge.svg?branch=master)
 
 This is my implementation of Sloneek UI code exam in Angular. Due to missing `README` content I went with full API implementation while trying to follow as many recommendations as possible.
 
