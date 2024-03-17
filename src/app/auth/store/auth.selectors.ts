@@ -9,11 +9,8 @@ export const selectIsAuthenticating = createSelector(
   state => state.isAuthenticating,
 );
 
-export const selectFailedToAuthenticate = createSelector(
-  selectAuthState,
-  state => state.failedToAuthenticate,
-);
-
 export const selectIsAuthenticated = createSelector(selectAuthState, state => !!state.user);
 
 export const selectUserEmail = createSelector(selectAuthState, state => state.user?.email ?? '');
+
+export const selectAuthTokens = createSelector(selectAuthState, state => state.user?.tokens);

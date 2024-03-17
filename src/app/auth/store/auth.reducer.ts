@@ -22,14 +22,12 @@ export type User = {
 export type AuthState = {
   isAuthenticating: boolean;
   attemptedToAuthenticate: boolean;
-  failedToAuthenticate: boolean;
   user: Maybe<User>;
 };
 
 export const initialState: AuthState = {
   isAuthenticating: false,
   attemptedToAuthenticate: true,
-  failedToAuthenticate: false,
   user: null,
 };
 
@@ -71,7 +69,6 @@ export const authReducer = createReducer(
     loginActions.error,
     (state): AuthState => ({
       ...state,
-      failedToAuthenticate: true,
       isAuthenticating: false,
       attemptedToAuthenticate: true,
     }),
@@ -87,6 +84,7 @@ export const authReducer = createReducer(
 
   on(
     logoutActions.logoutUser,
+    logoutActions.notAuthenticated,
     (): AuthState => ({
       ...initialState,
       attemptedToAuthenticate: true,

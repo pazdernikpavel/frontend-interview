@@ -9,7 +9,7 @@ import { ChangeDetectionStrategy, Component, computed, input } from '@angular/co
   standalone: true,
 })
 export class MeteorComponent {
-  public count = input(20);
+  public count = input.required<number>();
   public meteorCount = computed(() => new Array(this.count()).fill(0));
 
   public randomizeLeftPosition(): string {

@@ -3,49 +3,35 @@ import { Injectable } from '@angular/core';
 import * as Apollo from 'apollo-angular';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = {
-  [K in keyof T]: T[K];
-};
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]?: Maybe<T[SubKey]>;
-};
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]: Maybe<T[SubKey]>;
-};
-export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = {
-  [_ in K]?: never;
-};
-export type Incremental<T> =
-  | T
-  | {
-      [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never;
-    };
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string };
-  String: { input: string; output: string };
-  Boolean: { input: boolean; output: boolean };
-  Int: { input: number; output: number };
-  Float: { input: number; output: number };
+  ID: string;
+  String: string;
+  Boolean: boolean;
+  Int: number;
+  Float: number;
 };
 
 export type Category = {
   __typename?: 'Category';
-  authorId: Scalars['String']['output'];
-  id: Scalars['String']['output'];
-  title: Scalars['String']['output'];
+  authorId: Scalars['String'];
+  id: Scalars['String'];
+  title: Scalars['String'];
 };
 
 export type CreateCategoryInput = {
-  title: Scalars['String']['input'];
+  title: Scalars['String'];
 };
 
 export type CreateTransactionRecordInput = {
-  amount: Scalars['Int']['input'];
-  categoryId: Scalars['String']['input'];
-  date: Scalars['String']['input'];
-  description?: InputMaybe<Scalars['String']['input']>;
-  title: Scalars['String']['input'];
+  amount: Scalars['Int'];
+  categoryId: Scalars['String'];
+  date: Scalars['String'];
+  description?: InputMaybe<Scalars['String']>;
+  title: Scalars['String'];
   type: TransactionType;
 };
 
@@ -54,7 +40,7 @@ export type Mutation = {
   createCategory: Category;
   createTransactionRecord: TransactionRecord;
   login: Tokens;
-  logout: Scalars['Boolean']['output'];
+  logout: Scalars['Boolean'];
   refresh: Tokens;
   removeCategory?: Maybe<Category>;
   removeTransactionRecord?: Maybe<TransactionRecord>;
@@ -74,11 +60,11 @@ export type MutationLoginArgs = {
 };
 
 export type MutationRemoveCategoryArgs = {
-  id: Scalars['String']['input'];
+  id: Scalars['String'];
 };
 
 export type MutationRemoveTransactionRecordArgs = {
-  id: Scalars['String']['input'];
+  id: Scalars['String'];
 };
 
 export type MutationSignupArgs = {
@@ -93,19 +79,19 @@ export type Query = {
 
 export type Tokens = {
   __typename?: 'Tokens';
-  access_token: Scalars['String']['output'];
-  refresh_token: Scalars['String']['output'];
+  access_token: Scalars['String'];
+  refresh_token: Scalars['String'];
 };
 
 export type TransactionRecord = {
   __typename?: 'TransactionRecord';
-  amount: Scalars['Int']['output'];
-  authorId: Scalars['String']['output'];
-  categoryId: Scalars['String']['output'];
-  date: Scalars['String']['output'];
-  description?: Maybe<Scalars['String']['output']>;
-  id: Scalars['String']['output'];
-  title: Scalars['String']['output'];
+  amount: Scalars['Int'];
+  authorId: Scalars['String'];
+  categoryId: Scalars['String'];
+  date: Scalars['String'];
+  description?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+  title: Scalars['String'];
   type?: Maybe<TransactionType>;
 };
 
@@ -116,15 +102,15 @@ export enum TransactionType {
 
 export type User = {
   __typename?: 'User';
-  email: Scalars['String']['output'];
-  hashedRt?: Maybe<Scalars['String']['output']>;
-  id: Scalars['String']['output'];
-  password: Scalars['String']['output'];
+  email: Scalars['String'];
+  hashedRt?: Maybe<Scalars['String']>;
+  id: Scalars['String'];
+  password: Scalars['String'];
 };
 
 export type UserInput = {
-  email: Scalars['String']['input'];
-  password: Scalars['String']['input'];
+  email: Scalars['String'];
+  password: Scalars['String'];
 };
 
 export type TokensTypeFragment = {
@@ -148,11 +134,7 @@ export type SignUpMutationVariables = Exact<{
 
 export type SignUpMutation = {
   __typename?: 'Mutation';
-  signup: {
-    __typename?: 'Tokens';
-    access_token: string;
-    refresh_token: string;
-  };
+  signup: { __typename?: 'Tokens'; access_token: string; refresh_token: string };
 };
 
 export type CreateCategoryMutationVariables = Exact<{
@@ -161,26 +143,16 @@ export type CreateCategoryMutationVariables = Exact<{
 
 export type CreateCategoryMutation = {
   __typename?: 'Mutation';
-  createCategory: {
-    __typename?: 'Category';
-    id: string;
-    title: string;
-    authorId: string;
-  };
+  createCategory: { __typename?: 'Category'; id: string; title: string; authorId: string };
 };
 
 export type DeleteCategoryMutationVariables = Exact<{
-  id: Scalars['String']['input'];
+  id: Scalars['String'];
 }>;
 
 export type DeleteCategoryMutation = {
   __typename?: 'Mutation';
-  removeCategory?: {
-    __typename?: 'Category';
-    id: string;
-    title: string;
-    authorId: string;
-  } | null;
+  removeCategory?: { __typename?: 'Category'; id: string; title: string; authorId: string } | null;
 };
 
 export type CategoryTypeFragment = {
@@ -222,7 +194,7 @@ export type CreateTransactionMutation = {
 };
 
 export type DeleteTransactionMutationVariables = Exact<{
-  id: Scalars['String']['input'];
+  id: Scalars['String'];
 }>;
 
 export type DeleteTransactionMutation = {

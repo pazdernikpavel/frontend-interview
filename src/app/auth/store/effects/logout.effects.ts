@@ -28,4 +28,19 @@ export class LogoutEffects {
       ]),
     ),
   );
+
+  public readonly handleUnauthorizedException$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(logoutActions.notAuthenticated),
+      concatMap(() => [
+        persistanceActions.removeTokens(),
+        navigationActions.navigateTo({ path: ['/', AppRoute.Auth, AuthRoute.Login] }),
+        notificationActions.notify({
+          notificationType: 'warning',
+          title: 'Session expired',
+          message: 'Unfortunately, your session has expired. Please log in again.',
+        }),
+      ]),
+    ),
+  );
 }

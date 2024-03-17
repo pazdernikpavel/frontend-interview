@@ -27,7 +27,7 @@ export function fetchQuery<
   successAction: (data: QueryType<GQL>) => S,
   errorAction: (error: string) => E,
 ): Observable<S | E> {
-  return gql.fetch(variables, { fetchPolicy: 'network-only' }).pipe(
+  return gql.fetch(variables, { fetchPolicy: 'network-only', errorPolicy: 'ignore' }).pipe(
     map((response: ApolloQueryResult<GQL>) => {
       if (response.data) {
         return successAction(response.data as QueryType<GQL>);
