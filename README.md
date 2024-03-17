@@ -1,4 +1,4 @@
-# Sloneek test exam ✅
+# Test exam 🚀
 
 ![Linters](https://github.com/pazdernikpavel/sloneek-frontend-interview-pazdernik/actions/workflows/lint.yml/badge.svg?branch=master)
 ![Unit tests](https://github.com/pazdernikpavel/sloneek-frontend-interview-pazdernik/actions/workflows/unit-tests.yml/badge.svg?branch=master)
@@ -21,11 +21,10 @@ Additionaly I would go with custom components based on Tailwind CSS, probably he
 
 ## Unit tests
 
-I created unit tests just for few files, basically for one of each kind such as component, effect, reducer, etc. as 100% test coverage is probably not in the scope of this exam.
+I created just few specs as 100% test coverage is probably not in the scope of this exam and I am out of time dedicated to this exam and the codebase grew quite large in the past 48 hours. But hopefully this will give you an idea of how I write tests and how I approach testing in general.
 
-## Missing features 😒
+## Missing features 😓
 
-- Unexpected error handling on screens
 - Refresh token logic _(that would probably be an extra I did not have any free time left to do, we can discuss on the call)_
 - Responsive design _(this we can discuss on the call as well, however Nebular is missing any responsive component/grid support as far as I know, but we can definitely go through responsive design and I can share my thoughts)_
 
