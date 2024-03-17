@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 
 import { NbDialogService } from '@nebular/theme';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { exhaustMap, map, switchMap } from 'rxjs/operators';
+import { exhaustMap, map, tap } from 'rxjs/operators';
 
 import { CreateTransactionGQL } from '@app/graphql/generated/schema';
 import { executeMutation } from '@app/graphql/graphql.utils';
@@ -20,10 +20,8 @@ export class CreateTransactionEffects {
     () =>
       this.actions$.pipe(
         ofType(createTransactionActions.openModal),
-        switchMap(
-          () =>
-            this.dialogService.open(CreateTransactionComponent, { closeOnBackdropClick: false })
-              .onClose,
+        tap(() =>
+          this.dialogService.open(CreateTransactionComponent, { closeOnBackdropClick: false }),
         ),
       ),
     { dispatch: false },
@@ -52,6 +50,19 @@ export class CreateTransactionEffects {
           notificationType: 'error',
           title: 'Failed to create transaction…',
           message,
+        }),
+      ),
+    ),
+  );
+
+  public readonly handleCreateTransactionSuccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(createTransactionActions.success),
+      map(() =>
+        notificationActions.notify({
+          notificationType: 'success',
+          title: 'Success',
+          message: 'Transaction created successfully',
         }),
       ),
     ),

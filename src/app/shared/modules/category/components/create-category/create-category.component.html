@@ -1,0 +1,44 @@
+<nb-card
+  class="w-full sm:w-[450px]"
+  status="info">
+  <nb-card-header>Create category</nb-card-header>
+  <nb-card-body>
+    <app-form-group
+      [appForm]="createCategoryForm"
+      (appFormSubmit)="submitModal()">
+      <!-- Title input -->
+      @if (createCategoryForm.controls.title; as titleControl) {
+        <app-form-control>
+          <app-label
+            appFor="title"
+            [appIsRequired]="true">
+            Title
+          </app-label>
+          <app-input
+            [appControl]="titleControl"
+            appName="title">
+          </app-input>
+          @if (titleControl.hasError('required') && titleControl.touched) {
+            <app-validation-message>Title is required</app-validation-message>
+          }
+        </app-form-control>
+      }
+
+      <app-form-actions>
+        <button
+          nbButton
+          size="small"
+          type="button"
+          (click)="closeModal()">
+          Cancel
+        </button>
+        <button
+          nbButton
+          size="small"
+          status="primary">
+          Create category
+        </button>
+      </app-form-actions>
+    </app-form-group>
+  </nb-card-body>
+</nb-card>

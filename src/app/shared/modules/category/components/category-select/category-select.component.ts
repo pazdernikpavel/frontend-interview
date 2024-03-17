@@ -4,6 +4,7 @@ import { NbButtonModule, NbIconModule, NbSelectModule, NbSpinnerModule } from '@
 import { Store } from '@ngrx/store';
 
 import { FormControlInput } from '@app/shared/forms/forms.shared';
+import { createCategoryActions } from '../../store/actions/create-category.actions';
 import { getCategoriesActions } from '../../store/actions/get-categories.actions';
 import { selectCategoryList, selectIsFetchingCategoryList } from '../../store/category.selectors';
 
@@ -31,8 +32,6 @@ export class CategorySelectComponent extends FormControlInput {
   }
 
   public createCategory(): void {
-    // TODO: Implement another modal window for adding category
-    // eslint-disable-next-line no-alert
-    confirm('Not implemented feature 😒 try adding category via DB/Graphql Playground');
+    this.store.dispatch(createCategoryActions.openModal());
   }
 }
