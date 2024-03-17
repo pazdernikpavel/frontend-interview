@@ -1,5 +1,7 @@
 # Sloneek test exam ✅
 
+![Unit tests](https://github.com/pazdernikpavel/sloneek-frontend-interview-pazdernik/actions/workflows/lint.yml/badge.svg?branch=master)
+
 This is my implementation of Sloneek UI code exam in Angular. Due to missing `README` content I went with full API implementation while trying to follow as many recommendations as possible.
 
 Before I started, I updated this repository to latest Angular version which is `17.2.3` at the moment, mainly due to extensive `signal` support which I wanted to try out so badly instead of going with traditional `@Input`, primitive variable double binding, `effect` or `.takeUntil(this.$ngDestroy)` / `.subscribe` approach. And I personally like it although it's not yet widely adopted thus probably not ready for pruduction deployments of larger applications 🙌😊
