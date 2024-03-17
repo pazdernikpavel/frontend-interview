@@ -38,7 +38,7 @@ export class LogoutEffects {
         notificationActions.notify({
           notificationType: 'warning',
           title: 'Session expired',
-          message: 'Unfortunately, your session has expired. Please log in again.',
+          message: 'Your session has expired. Please log in again.',
         }),
       ]),
     ),
