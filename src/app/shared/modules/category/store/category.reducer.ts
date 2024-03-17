@@ -10,7 +10,8 @@ export type CategoryState = {
   isDeleting: boolean;
   isFetchingList: boolean;
   categories: Category[];
-  error: Maybe<string>;
+  expectedError: Maybe<string>;
+  unexpectedError: Maybe<string>;
 };
 
 export const initialState: CategoryState = {
@@ -18,7 +19,8 @@ export const initialState: CategoryState = {
   isDeleting: false,
   isFetchingList: false,
   categories: [],
-  error: null,
+  expectedError: null,
+  unexpectedError: null,
 };
 
 export const CATEGORY_FEATURENAME = 'category';
@@ -39,7 +41,7 @@ export const categoryReducer = createReducer(
     (state, { message }): CategoryState => ({
       ...state,
       isCreating: false,
-      error: message,
+      expectedError: message,
     }),
   ),
 
@@ -65,7 +67,7 @@ export const categoryReducer = createReducer(
     (state, { message }): CategoryState => ({
       ...state,
       isDeleting: false,
-      error: message,
+      expectedError: message,
     }),
   ),
 
@@ -96,7 +98,7 @@ export const categoryReducer = createReducer(
     (state, { message }): CategoryState => ({
       ...state,
       isFetchingList: false,
-      error: message,
+      unexpectedError: message,
     }),
   ),
 

@@ -38,6 +38,7 @@ const storeDevtoolsOptions: StoreDevtoolsOptions = {
 const nbToastrOptions: Partial<NbToastrConfig> = {
   duration: 5_000,
   position: NbGlobalPhysicalPosition.TOP_RIGHT,
+  preventDuplicates: true,
 };
 
 /** Nebular theming setup. */

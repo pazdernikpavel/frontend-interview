@@ -57,22 +57,6 @@
         "@angular-eslint/no-conflicting-lifecycle": "error",
         "@angular-eslint/no-host-metadata-property": "off",
         "@angular-eslint/prefer-on-push-component-change-detection": "warn",
-        "@angular-eslint/component-selector": [
-          "error",
-          {
-            "type": "element",
-            "prefix": "app",
-            "style": "kebab-case"
-          }
-        ],
-        "@angular-eslint/directive-selector": [
-          "error",
-          {
-            "type": "attribute",
-            "prefix": "app",
-            "style": "camelCase"
-          }
-        ],
         "@ngrx/prefer-effect-callback-in-block-statement": "off",
         "@ngrx/avoid-mapping-selectors": "off",
         "no-console": ["error", {}],

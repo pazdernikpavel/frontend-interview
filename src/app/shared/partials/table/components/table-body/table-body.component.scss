@@ -1,0 +1,7 @@
+:host {
+  ::ng-deep {
+    .app-table-body-row + .table-body-row {
+      @apply bg-gray-800 border-gray-700;
+    }
+  }
+}

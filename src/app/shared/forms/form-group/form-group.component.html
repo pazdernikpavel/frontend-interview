@@ -1,6 +1,6 @@
 <form
   [formGroup]="form()"
-  (ngSubmit)="formSubmit.emit()"
+  (ngSubmit)="appFormSubmit.emit()"
   class="flex flex-col gap-5 w-full">
   <ng-content></ng-content>
 </form>

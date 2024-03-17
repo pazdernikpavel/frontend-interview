@@ -1,7 +1,7 @@
 <app-auth-screen>
   <app-form-group
     [form]="loginForm"
-    (formSubmit)="submit()">
+    (appFormSubmit)="submit()">
     <!-- Email input -->
     @if (loginForm.controls.email; as emailControl) {
       <app-form-control>
