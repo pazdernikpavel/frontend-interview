@@ -28,7 +28,11 @@
     app-table
     #transactionTable
     [appData]="transactions()"
-    appNoRecords="No transactions found, start adding new transactions.">
+    [appNoRecords]="
+      searchControl.value
+        ? 'No transaction matches your search term.'
+        : 'No transactions found, start adding new transactions.'
+    ">
     <thead app-table-head>
       <tr app-table-header-row>
         <th
@@ -51,7 +55,7 @@
       </tr>
     </thead>
     <tbody app-table-body>
-      @for (item of transactionTable.appData(); track $index) {
+      @for (item of transactionTable.appData(); track item.id; let i = $index) {
         <tr app-table-body-row>
           <td
             app-table-body-cell
@@ -69,9 +73,7 @@
               </nb-icon>
             }
           </td>
-          <td
-            app-table-body-cell
-            [highlight]="true">
+          <td app-table-body-cell>
             {{ item.title }}
           </td>
           <td app-table-body-cell>
@@ -88,21 +90,21 @@
             app-table-body-cell
             appWidth="100px"
             appAlign="center">
-            <ng-template #removeTransactionPopover>
-              <app-popover-confirmation
-                (appConfirm)="deleteTransaction(item.id)"
-                (appCancel)="handlePopoverCancel()">
-                Are you sure you want to remove this transaction?
-              </app-popover-confirmation>
-            </ng-template>
-
             <button
               nbButton
               ghost
               status="danger"
               [nbPopover]="removeTransactionPopover"
               nbPopoverTrigger="click"
+              #popoverRef="nbPopover"
               nbPopoverPlacement="bottom">
+              <ng-template #removeTransactionPopover>
+                <app-popover-confirmation
+                  (appConfirm)="deleteTransaction(item.id, popoverRef)"
+                  (appCancel)="handlePopoverCancel(popoverRef)">
+                  Are you sure you want to remove this transaction?
+                </app-popover-confirmation>
+              </ng-template>
               <nb-icon
                 icon="trash-2-outline"
                 status="danger">

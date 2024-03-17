@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Signal, inject, viewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Signal, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
@@ -51,7 +51,6 @@ export class TransactionListComponent {
   private store = inject(Store);
 
   public readonly searchControl = new FormControl('');
-  public readonly popover = viewChild.required(NbPopoverDirective);
   public readonly transactionType = TransactionType;
   public readonly isFetchingList = this.store.selectSignal(selectIsFetchingTransactionList);
 
@@ -82,13 +81,13 @@ export class TransactionListComponent {
     return this.store.selectSignal(selectCategoryById(categoryId));
   }
 
-  public deleteTransaction(transactionId: string): void {
-    this.popover().hide();
+  public deleteTransaction(transactionId: string, popoverRef: NbPopoverDirective): void {
     this.store.dispatch(deleteTransactionActions.start({ request: { id: transactionId } }));
+    popoverRef.hide();
   }
 
-  public handlePopoverCancel(): void {
-    this.popover().hide();
+  public handlePopoverCancel(popoverRef: NbPopoverDirective): void {
+    popoverRef.hide();
   }
 
   public openCreateTransactionModal(): void {

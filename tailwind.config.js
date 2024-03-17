@@ -4,7 +4,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'danger-600': '#db2c66',
+        danger: '#db2c66',
+        'dark-1': '#222b45',
+        'dark-2': '#192038',
       },
     },
     animation: {

@@ -8,7 +8,7 @@
     [nbSpinner]="isLoading()"
     [selected]="controlValue()"
     (selectedChange)="updateControl($event)">
-    @for (item of categories(); track $index) {
+    @for (item of categories(); track item.id) {
       <nb-option [value]="item.id">{{ item.title }}</nb-option>
     }
   </nb-select>

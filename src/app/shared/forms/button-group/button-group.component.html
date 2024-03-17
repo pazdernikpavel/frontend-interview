@@ -2,7 +2,7 @@
   [status]="controlStatus()"
   (valueChange)="updateControlValue($event)"
   outline>
-  @for (item of appItems(); track $index) {
+  @for (item of appItems(); track item.value) {
     <button
       nbButtonToggle
       [pressed]="item.value === controlValue()"
